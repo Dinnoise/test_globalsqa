@@ -1,6 +1,8 @@
 package tests;
 
 import helpers.PropertyProvider;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
@@ -17,16 +19,11 @@ import utility.SortingFirstName;
 
 import static com.codeborne.selenide.Selenide.*;
 
+@Epic("Управление клиентами")
 public class AddCustomerTest extends BaseTest
 {
     AddCustomerPage addCustomerPage;
     CustomersPage customersPage;
-
-    @BeforeMethod
-    public final void setup()
-    {
-        open(PropertyProvider.getBaseUrl());
-    }
 
     @DataProvider(name = "customerData")
     public Object[][] dpMethod() {
@@ -37,6 +34,7 @@ public class AddCustomerTest extends BaseTest
         };
     }
 
+    @Feature("Создание клиентов")
     @Test(description = "Проверка на кликабельность кнопки Add Customer и успешного добавления нового клиента", dataProvider = "customerData")
     public void addNewCustomer(String firstName, String lastName, String postCode)
     {
@@ -48,56 +46,11 @@ public class AddCustomerTest extends BaseTest
                 .submitCustomer();
 
         var alertText = addCustomerPage.alertIsCustomerAdded();
-        softAssert.assertNotNull(alertText, "Alert didn't have any text");
+        softAssert.assertNotNull(alertText, "В alert не было никакого текста.");
 
             softAssert.assertTrue(alertText.contains("Customer added successfully") ||
                             alertText.contains("Please check the details. Customer may be duplicate."),
-                    "The alert text is incorrect: " + alertText);
+                    "Текст alert'а неверен: " + alertText);
         softAssert.assertAll();
-    }
-
-    @Test(description = "Проверка сортировки клиентов по First Name")
-    public void sortCustomersByFirstName() {
-        var softAssert = new SoftAssert();
-        customersPage = page(BankManagerPage.class)
-                .goToCustomersPage();
-
-        var namesBefore = customersPage
-                .getCustomerFirstNames();
-
-        customersPage
-                .clickFirstNameHeader();
-
-
-        var namesDesc = customersPage
-                .getCustomerFirstNames();
-        softAssert.assertEquals(namesDesc, SortingFirstName.sortDesc(namesBefore), "Sorting Z->A is not correct");
-
-        customersPage
-                .clickFirstNameHeader();
-        var namesAsc = customersPage
-                .getCustomerFirstNames();
-        softAssert.assertEquals(namesAsc, SortingFirstName.sortAsc(namesBefore), "Sorting A->Z is not correct");
-    }
-
-    @Test(description = "Проверка на нахождение клиента по средней арифметической длине и его удаление")
-    public void testDeleteCustomer() {
-        customersPage = page(BankManagerPage.class)
-                .goToCustomersPage();
-        var helper = new DeleteCustomer(customersPage);
-
-        var initialQuantityCustomers = customersPage
-                .getCustomerFirstNames()
-                .size();
-        helper.deleteCustomerWithClosestAvgLength();
-        var updatedNames = customersPage
-                .getCustomerFirstNames()
-                .size();
-        Assert.assertTrue(updatedNames < initialQuantityCustomers, "The client was not removed");
-    }
-
-    @AfterClass
-    public void tearDown() {
-        closeWebDriver();
     }
 }
