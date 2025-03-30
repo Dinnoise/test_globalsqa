@@ -50,10 +50,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
-                    <argLine>
-                        -javaagent:"C:\Users\kirya\.m2\repository\org\aspectj\aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                    </argLine>
-
                     <suiteXmlFiles>
                         <suiteXMlFile>
                             src/test/resources/suites/tests_default.xml

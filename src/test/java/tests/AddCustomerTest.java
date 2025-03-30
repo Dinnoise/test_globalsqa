@@ -3,9 +3,6 @@ package tests;
 import helpers.PropertyProvider;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -13,9 +10,6 @@ import pages.AddCustomerPage;
 import pages.BankManagerPage;
 import pages.CustomersPage;
 import utility.AddCustomerGenerator;
-import utility.DeleteCustomer;
-import utility.SortingFirstName;
-
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -23,7 +17,6 @@ import static com.codeborne.selenide.Selenide.*;
 public class AddCustomerTest extends BaseTest
 {
     AddCustomerPage addCustomerPage;
-    CustomersPage customersPage;
 
     @DataProvider(name = "customerData")
     public Object[][] dpMethod() {
