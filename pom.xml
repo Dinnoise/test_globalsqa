@@ -42,7 +42,7 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.13.0</version>
+                <version>2.15.2</version>
             </plugin>
 
             <plugin>
@@ -50,6 +50,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}"/org/aspectj/aspectjweaver/1.9.23/aspectjweaver-1.9.23.jar
+                    </argLine>
                     <suiteXmlFiles>
                         <suiteXMlFile>
                             src/test/resources/suites/tests_default.xml
