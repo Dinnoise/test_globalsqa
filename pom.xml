@@ -60,8 +60,6 @@
                         </suiteXMlFile>
                     </suiteXmlFiles>
                 </configuration>
-
-
             </plugin>
         </plugins>
     </build>
