@@ -23,7 +23,7 @@ public class BaseTest
     @BeforeMethod
     public final void setup()
     {
-        open(PropertyProvider.getBaseUrl());
+        open(PropertyProvider.getProperty("base.url"));
     }
 
     @AfterClass

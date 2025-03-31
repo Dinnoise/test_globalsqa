@@ -16,10 +16,6 @@ public class PropertyProvider {
         }
     }
 
-    public static String getBaseUrl() {
-        return properties.getProperty("base.url", "https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager");
-    }
-
     public static String getProperty(String key) {
         return properties.getProperty(key);
     }
