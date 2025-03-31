@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","342","Проверка на нахождение клиента по средней арифметической длине и его удаление","autoTest","Mon Mar 31 10:23:32 GMT 2025","passed","Mon Mar 31 10:23:32 GMT 2025","tests.SortingAndDeletionTest","Tests","tests.SortingAndDeletionTest","testDeleteCustomer"
+"","1456","Проверка на кликабельность кнопки Add Customer и успешного добавления нового клиента","autoTest","Mon Mar 31 10:23:31 GMT 2025","passed","Mon Mar 31 10:23:32 GMT 2025","tests.AddCustomerTest","Tests","tests.AddCustomerTest","addNewCustomer"
+"","1260","Проверка сортировки клиентов по First Name","autoTest","Mon Mar 31 10:23:31 GMT 2025","passed","Mon Mar 31 10:23:32 GMT 2025","tests.SortingAndDeletionTest","Tests","tests.SortingAndDeletionTest","sortCustomersByFirstName"
